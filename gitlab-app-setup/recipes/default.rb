@@ -1,5 +1,5 @@
 #install package
-%{ curl openssh-server ca-certificates postfix }.each do |pkg|
+%w{ curl openssh-server ca-certificates postfix }.each do |pkg|
 	package pkg 
 end
 #package [ 'curl', 'openssh-server', 'ca-certificates', 'postfix' ] 
