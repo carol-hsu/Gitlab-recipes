@@ -1,5 +1,8 @@
 #install package
-package [ 'curl', 'openssh-server', 'ca-certificates', 'postfix' ] 
+%{ curl openssh-server ca-certificates postfix }.each do |pkg|
+	package pkg 
+end
+#package [ 'curl', 'openssh-server', 'ca-certificates', 'postfix' ] 
 
 #get source code
 execute 'download deb' do
@@ -13,7 +16,7 @@ end
 
 #change to ELB DNS Name
 #execute 'change url' do
-#	command 'sed /etc/gitlab/gitlab.rb'
+#	command 'sed -i "c exeternal_url=\"'+node[:elb_dns]+'\"" /etc/gitlab/gitlab.rb'
 #end
 
 #start gitlab
