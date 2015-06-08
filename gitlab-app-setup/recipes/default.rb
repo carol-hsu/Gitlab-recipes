@@ -21,5 +21,5 @@ end
 
 #start gitlab
 execute 'start gitlab' do
-	command 'gitlab-ctl reconfigure | gitlab-ctl start'
+	command 'gitlab-ctl reconfigure && gitlab-ctl start'
 end
