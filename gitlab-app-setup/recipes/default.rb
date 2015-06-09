@@ -15,9 +15,9 @@ apt_package 'gitlab-ce' do
 end
 
 #change to ELB DNS Name
-execute 'change url' do
-	command 'sed -i "4c exeternal_url \''+node[:elb_dns]+'\'" /etc/gitlab/gitlab.rb'
-end
+#execute 'change url' do
+#	command 'sed -i "4c exeternal_url \''+node[:elb_dns]+'\'" /etc/gitlab/gitlab.rb'
+#end
 
 #start gitlab
 execute 'start gitlab' do
