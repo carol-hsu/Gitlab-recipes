@@ -6,11 +6,12 @@ end
 
 #get source code
 execute 'download deb' do
-    command 'curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | bash'
+#    command 'curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | bash'
+	command 'curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh | sudo bash'
 end
 
 #install
-apt_package 'gitlab-ce' do
+apt_package 'gitlab-ee' do
     action :install
 end
 
