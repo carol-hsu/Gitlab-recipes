@@ -20,7 +20,28 @@ end
 #	command 'sed -i "4c exeternal_url \''+node[:elb_dns]+'\'" /etc/gitlab/gitlab.rb'
 #end
 
+template "/etc/gitlab/custom-gitlab.rb" do
+	source "custom-gitlab.rb.erb"
+	mode '600'
+	owner 'root'
+	group 'root'
+	variables ({
+		:redis_endpoint => node[:cache_endpoint],
+		:db_name =>	node[:database][:name],
+		:db_user => node[:database][:user],
+		:db_passwd => node[:database][:password],
+		:db_endpoint => node[:database][:endpoint]
+	})	
+	notifies :run, 'execute[change-configure-rb]', :immediately
+end
+
+execute 'change-configure-rb' do
+	cwd '/etc/gitlab'
+	command 'cat custom-gitlab.rb >> gitlab.rb'
+	action :nothing
+end
+
 #start gitlab
-#execute 'start gitlab' do
-#	command 'gitlab-ctl reconfigure && gitlab-ctl start'
-#end
+execute 'start gitlab' do
+	command 'gitlab-ctl reconfigure'
+end

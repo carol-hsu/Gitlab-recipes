@@ -1,0 +1,13 @@
+#### redis
+redis['enable'] = false
+gitlab_rails['redis_host'] = "<%= @redis_endpoint %>"
+gitlab_rails['redis_port'] = 6379
+#### DB
+postgresql['enable'] = false
+gitlab_rails['db_adapter'] = "postgresql"
+gitlab_rails['db_encoding'] = "unicode"
+gitlab_rails['db_database'] = "<%= @db_name %>"
+gitlab_rails['db_username'] = "<%= @db_user %>"
+gitlab_rails['db_password'] = "<%= @db_passwd %>"
+gitlab_rails['db_host'] = "<%= @db_endpoint %>"
+gitlab_rails['db_port'] = 5432
