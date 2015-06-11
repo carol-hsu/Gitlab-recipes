@@ -22,12 +22,3 @@ execute 'create-sshkey' do
 	notifies :run 'bash[enable-passwdless-ssh]', :immediately
 end
 
-bash 'enable-passwdless-ssh' do
-    user 'cepher'
-    code <<-EOH
-	ssh-copy-id cepher@#{node[:opsworks][:layers]['ceph-mon'][:instances].first[:private_ip]}
-	ssh-copy-id cepher@#{node[:opsworks][:layers]['ceph-osd'][:instances].first[:private_ip]}
-	ssh-copy-id cepher@#{node[:opsworks][:layers]['ceph-osd'][:instances].first(2).last[:private_ip]}
-    EOH
-    action :nothing
-end
