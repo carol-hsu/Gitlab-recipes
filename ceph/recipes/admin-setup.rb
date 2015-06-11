@@ -12,13 +12,20 @@ user 'cepher' do
     shell '/bin/bash'
     password '$1$gbabLqW/$ELv1pY2Vl86jVDm8gXS/b1'
     action :create
-    notifies :run 'execute[create-sshkey]', :immediately
+end
+
+directory '/home/cepher' do
+    owner 'cepher'
+    group 'cepher'
+end
+
+directory '/home/cepher/admin-config' do
+    owner 'cepher'
+    group 'cepher'
 end
 
 execute 'create-sshkey' do
 	user 'cepher'
 	command "ssh-keygen -f ~/.ssh/id_rsa -t rsa -N ''"
-	action :nothing
-	notifies :run 'bash[enable-passwdless-ssh]', :immediately
 end
 

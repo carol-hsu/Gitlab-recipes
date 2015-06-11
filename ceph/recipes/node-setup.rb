@@ -13,6 +13,11 @@ user 'cepher' do
 	action :create
 end
 
+directory '/home/cepher' do
+	owner 'cepher'
+	group 'cepher'
+end
+
 bash 'make-cepher-a-sudoer' do
     user 'root'
     code <<-EOH
