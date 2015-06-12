@@ -26,6 +26,7 @@ end
 
 execute 'create-sshkey' do
 	user 'cepher'
-	command "ssh-keygen -f ~/.ssh/id_rsa -t rsa -N ''"
+	cwd '/home/cepher'
+	command "ssh-keygen -f .ssh/id_rsa -t rsa -N ''"
 end
 
