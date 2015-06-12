@@ -9,7 +9,6 @@ bash 'enable-passwdless-ssh' do
 	ssh-copy-id cepher@#{osd1}
 	ssh-copy-id cepher@#{osd2}
     EOH
-    action :nothing
 end
 
 #create a cluster
