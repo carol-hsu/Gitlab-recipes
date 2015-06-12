@@ -1,6 +1,6 @@
-mon1 = node[:opsworks][:layers]['ceph-mon'][:instances].first[:private_ip]
-osd1 = node[:opsworks][:layers]['ceph-osd'][:instances].first[:private_ip]
-osd2 = node[:opsworks][:layers]['ceph-osd'][:instances].first(2).last[:private_ip]
+mon1 = node[:opsworks][:layers]['ceph-mon'][:instances]['ceph-mon1'][:private_ip]
+osd1 = node[:opsworks][:layers]['ceph-osd'][:instances]['ceph-osd1'][:private_ip]
+osd2 = node[:opsworks][:layers]['ceph-osd'][:instances]['ceph-osd2'][:private_ip]
 
 bash 'enable-passwdless-ssh' do
     user 'cepher'
