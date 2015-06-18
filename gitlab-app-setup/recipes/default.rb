@@ -41,7 +41,7 @@ execute 'change-configure-rb' do
 	action :nothing
 end
 
-#start gitlab
-execute 'start gitlab' do
-	command 'gitlab-ctl start && gitlab-ctl reconfigure'
-end
+##start gitlab
+#execute 'start gitlab' do
+#	command 'gitlab-ctl start && gitlab-ctl reconfigure'
+#end
