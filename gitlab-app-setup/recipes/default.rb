@@ -6,12 +6,12 @@ end
 
 #get source code
 execute 'download deb' do
-#    command 'curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | bash'
-	command 'curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh | sudo bash'
+	command 'curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | bash'
+	#command 'curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh | sudo bash'
 end
 
 #install
-apt_package 'gitlab-ee' do
+apt_package 'gitlab-ce' do
     action :install
 end
 
@@ -41,7 +41,7 @@ execute 'change-configure-rb' do
 	action :nothing
 end
 
-##start gitlab
-#execute 'start gitlab' do
-#	command 'gitlab-ctl start && gitlab-ctl reconfigure'
-#end
+#start gitlab
+execute 'start gitlab' do
+	command 'gitlab-ctl reconfigure'
+end
